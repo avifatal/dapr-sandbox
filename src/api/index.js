@@ -4,9 +4,13 @@ const app = express();
 const port = 8000;
 
 const daprClient = new DaprClient();
-app.get('/get-from-worker', (req, res) => {
-    const result = daprClient.invoker.invoke('worker','get-hello', HttpMethod.GET);
-    res.send({messageFromWorker: result});
+app.get('/get-from-worker', async (req, res) => {
+    try {
+        const result = await daprClient.invoker.invoke('worker', 'get-hello', HttpMethod.GET);
+        res.send({messageFromWorker: result});
+    }catch(e){
+        res.send({error: e.message});
+    }
 })
 
 app.listen(port, () => {
