@@ -1,13 +1,12 @@
 apiVersion: dapr.io/v1alpha1
 kind: Configuration
 metadata:
-  name: crypto-storage
+  name: worker
   namespace: ns
   trustDomain: public
 spec:
   accessControl:
     defaultAction: deny
-    #trustDomain: public
     policies:
       - appId: api
         defaultAction: allow
