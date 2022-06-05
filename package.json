@@ -1,0 +1,18 @@
+{
+  "name": "dapr-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "api" : "dapr run --app-id api --config ./src/api/api.config.yml --app-port 8000 --dapr-http-port 9000 -- node ./src/api/index.js",
+    "worker" : "dapr run --app-id worker --config ./src/worker/worker.config.yml --app-port 8001 --dapr-http-port 9001 -- node ./src/worker/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@dapr/dapr": "^2.2.1",
+    "dapr-client": "^2.2.1",
+    "express": "^4.18.1"
+  }
+}
